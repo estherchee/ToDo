@@ -41,7 +41,7 @@ public class ShowTasksMenu extends Menu {
     }
 
     @Override
-    public int executeMenuSwitcher(int userChoice, int commandToExit, Scanner commandReader, TaskCollection todos) {
+    public int executeMenuSwitcher(int userChoice, Scanner commandReader, TaskCollection todos) {
         switch (userChoice) {
             case 1:
                 displaySeparator();
@@ -60,7 +60,7 @@ public class ShowTasksMenu extends Menu {
             case 3:
                 break;
         }
-        return commandToExit;
+        return getChoiceNumberToExit();
     }
 
     @Override

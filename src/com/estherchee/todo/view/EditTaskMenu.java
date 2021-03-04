@@ -54,9 +54,8 @@ public class EditTaskMenu extends Menu {
     }
 
     @Override
-    int executeMenuSwitcher(int userChoice, int commandToExit, Scanner commandReader, TaskCollection todos) {
-        int COMMAND_TO_EXIT = 6;
-        if (userChoice != COMMAND_TO_EXIT) {
+    int executeMenuSwitcher(int userChoice, Scanner commandReader, TaskCollection todos) {
+        if (userChoice != getChoiceNumberToExit()) {
             displaySeparator();
             showTaskSummary(todos);
             String message;
@@ -108,6 +107,6 @@ public class EditTaskMenu extends Menu {
             commandReader.nextLine();
         }
 
-        return commandToExit;
+        return getChoiceNumberToExit();
     }
 }

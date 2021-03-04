@@ -45,7 +45,7 @@ abstract class Menu implements MenuSwitcher {
                 if (userChoice <= 0 || userChoice > getNumberOfChoices()) {
                     throw new InvalidCommandException(userChoice);
                 } else {
-                    userChoice = menu.execute(userChoice, commandToExit, commandReader, todos);
+                    userChoice = menu.execute(userChoice, commandReader, todos);
                 }
             } catch (NumberFormatException | InvalidCommandException error) {
                 System.err.println("Invalid input. Please try again.");
@@ -57,10 +57,10 @@ abstract class Menu implements MenuSwitcher {
 
     abstract void getMenu(TaskCollection todos);
 
-    abstract int executeMenuSwitcher(int userChoice, int commandToExit, Scanner commandReader, TaskCollection todos);
+    abstract int executeMenuSwitcher(int userChoice, Scanner commandReader, TaskCollection todos);
 
     @Override
-    public int execute(int userChoice, int commandToExit, Scanner commandReader, TaskCollection todos) {
-        return executeMenuSwitcher(userChoice, commandToExit, commandReader, todos);
+    public int execute(int userChoice, Scanner commandReader, TaskCollection todos) {
+        return executeMenuSwitcher(userChoice, commandReader, todos);
     }
 }
