@@ -1,4 +1,4 @@
-package com.estherchee.todo.models;
+package com.estherchee.todo.model;
 
 import java.time.LocalDate;
 import java.util.Comparator;
@@ -16,8 +16,8 @@ class Task {
     /**
      * Instantiate a task object with provided information.
      *
-     * @param title   Title of a task.
-     * @param dueDate Due date of a task.
+     * @param title       Title of a task.
+     * @param dueDate     Due date of a task.
      * @param projectName Type of the task.
      */
     Task(final String title, final LocalDate dueDate, final String projectName) {
@@ -43,6 +43,15 @@ class Task {
      */
     void updateDueDate(final String newDueDate) {
         this.dueDate = LocalDate.parse(newDueDate);
+    }
+
+    /**
+     * Get status of object.
+     *
+     * @return true if the task is completed.
+     */
+    Boolean getTaskStatus() {
+        return this.isCompleted;
     }
 
     /**
