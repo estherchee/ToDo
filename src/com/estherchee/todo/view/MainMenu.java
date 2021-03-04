@@ -46,7 +46,7 @@ public class MainMenu extends Menu {
                 } else {
                     switch (userChoice) {
                         case 1:
-                            ShowTaskMenu menu = new ShowTaskMenu(todos);
+                            ShowTasksMenu menu = new ShowTasksMenu();
                             menu.startup(commandReader, todos);
                             userChoice = -1;
                             getMenu(todos);

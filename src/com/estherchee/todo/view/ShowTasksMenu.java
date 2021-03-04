@@ -7,16 +7,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class ShowTaskMenu extends Menu {
-    private TaskCollection todos;
-
-    public ShowTaskMenu(TaskCollection todos) {
+public class ShowTasksMenu extends Menu {
+    public ShowTasksMenu() {
         super(new ArrayList<>(Arrays.asList(
                 "Show task by date",
                 "Show task by project",
                 "Back to main menu"
         )));
-        this.todos = todos;
     }
 
     @Override
