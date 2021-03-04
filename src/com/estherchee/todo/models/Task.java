@@ -7,26 +7,25 @@ package com.estherchee.todo.models;
 public class Task {
     private String title;
     private String dueDate;
-    private String status;
+    private Boolean isCompleted;
     private String project;
 
     /**
      * Instantiate a task object with provided information.
      *
-     * @param title     Title of a task.
-     * @param dueDate   Due date of a task.
-     * @param status    Status of the task.
-     * @param project   Type of the task.
+     * @param title   Title of a task.
+     * @param dueDate Due date of a task.
+     * @param project Type of the task.
      */
-    public Task(final String title, final String dueDate, final String status, final String project) {
+    public Task(final String title, final String dueDate, final String project) {
         this.title = title;
         this.dueDate = dueDate;
-        this.status = status;
+        this.isCompleted = false;
         this.project = project;
     }
 
     /**
-     * Modify title of object
+     * Modify title of object.
      *
      * @param newTitle Element for modification of object's title.
      */
@@ -35,7 +34,7 @@ public class Task {
     }
 
     /**
-     * Modify due date of object
+     * Modify due date of object.
      *
      * @param newDueDate Element for modification of object's due date.
      */
@@ -44,12 +43,10 @@ public class Task {
     }
 
     /**
-     * Modify status of object.
-     *
-     * @param newStatus Element for modification of object's status.
+     * Mark status of object as completed.
      */
-    public void updateStatus(final String newStatus) {
-        this.status = newStatus;
+    public void markTaskAsCompleted() {
+        this.isCompleted = true;
     }
 
     /**
@@ -67,9 +64,15 @@ public class Task {
 
     @Override
     public String toString() {
+        String status;
+        if (this.isCompleted) {
+            status = "Completed";
+        } else {
+            status = "In progress";
+        }
         String line1 = "Title    : " + capitalisedFirstLetterOfString(this.title);
         String line2 = "Due date : " + this.dueDate;
-        String line3 = "Status   : " + capitalisedFirstLetterOfString(this.status);
+        String line3 = "Status   : " + status;
         String line4 = "Project  : " + capitalisedFirstLetterOfString(this.project);
         return line1 + "\n" + line2 + "\n" + line3 + "\n" + line4;
     }
