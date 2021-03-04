@@ -1,6 +1,7 @@
 package com.estherchee.todo.view;
 
 import com.estherchee.todo.exception.InvalidCommandException;
+import com.estherchee.todo.model.TaskCollection;
 
 import java.util.Scanner;
 
@@ -10,7 +11,8 @@ public class TextView {
     private int userChoice;
 
     public TextView() {
-        currentMenu = new MainMenu();
+        TaskCollection todos = new TaskCollection();
+        currentMenu = new MainMenu(todos);
         commandReader = new Scanner(System.in);
         userChoice = 0;
     }
@@ -32,5 +34,6 @@ public class TextView {
                 System.out.println(ANSI_RED + "Invalid input. Please try again." + ANSI_RESET);
             }
         }
+        commandReader.close();
     }
 }
