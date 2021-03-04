@@ -1,12 +1,15 @@
 package com.estherchee.todo.models;
 
+import java.time.LocalDate;
+import java.util.Comparator;
+
 /**
  * Task provides an object for managing a task. Each task object will hold information about the task name, due date,
  * status and type of a task.
  */
-public class Task {
+class Task {
     private String title;
-    private String dueDate;
+    private LocalDate dueDate;
     private Boolean isCompleted;
     private String project;
 
@@ -17,7 +20,7 @@ public class Task {
      * @param dueDate Due date of a task.
      * @param project Type of the task.
      */
-    public Task(final String title, final String dueDate, final String project) {
+    Task(final String title, final LocalDate dueDate, final String project) {
         this.title = title;
         this.dueDate = dueDate;
         this.isCompleted = false;
@@ -29,7 +32,7 @@ public class Task {
      *
      * @param newTitle Element for modification of object's title.
      */
-    public void updateTitle(final String newTitle) {
+    void updateTitle(final String newTitle) {
         this.title = newTitle;
     }
 
@@ -38,14 +41,14 @@ public class Task {
      *
      * @param newDueDate Element for modification of object's due date.
      */
-    public void updateDueDate(final String newDueDate) {
-        this.dueDate = newDueDate;
+    void updateDueDate(final String newDueDate) {
+        this.dueDate = LocalDate.parse(newDueDate);
     }
 
     /**
      * Mark status of object as completed.
      */
-    public void markTaskAsCompleted() {
+    void markTaskAsCompleted() {
         this.isCompleted = true;
     }
 
@@ -54,9 +57,21 @@ public class Task {
      *
      * @param newProject Element for modification of object's project.
      */
-    public void updateProject(final String newProject) {
+    void updateProject(final String newProject) {
         this.project = newProject;
     }
+
+    static Comparator<Task> dueDateComparator = (task1, task2) -> {
+        if (task1.dueDate.isBefore(task2.dueDate)) {
+            return -1;
+        } else if (task1.dueDate.isEqual(task2.dueDate)) {
+            return 0;
+        } else {
+            return 1;
+        }
+    };
+
+    static Comparator<Task> projectComparator = Comparator.comparing(task -> task.project);
 
     private String capitalisedFirstLetterOfString(final String originalString) {
         return originalString.substring(0, 1).toUpperCase() + originalString.substring(1);
@@ -71,7 +86,7 @@ public class Task {
             status = "In progress";
         }
         String line1 = "Title    : " + capitalisedFirstLetterOfString(this.title);
-        String line2 = "Due date : " + this.dueDate;
+        String line2 = "Due date : " + this.dueDate.toString();
         String line3 = "Status   : " + status;
         String line4 = "Project  : " + capitalisedFirstLetterOfString(this.project);
         return line1 + "\n" + line2 + "\n" + line3 + "\n" + line4;
