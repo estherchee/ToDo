@@ -1,11 +1,23 @@
 package com.estherchee.todo.models;
 
+/**
+ * Task provides an object for managing a task. Each task object will hold information about the task name, due date,
+ * status and type of a task.
+ */
 public class Task {
     private String title;
     private String dueDate;
     private String status;
     private String project;
 
+    /**
+     * Instantiate a task object with provided information.
+     *
+     * @param title     Title of a task.
+     * @param dueDate   Due date of a task.
+     * @param status    Status of the task.
+     * @param project   Type of the task.
+     */
     public Task(final String title, final String dueDate, final String status, final String project) {
         this.title = title;
         this.dueDate = dueDate;
