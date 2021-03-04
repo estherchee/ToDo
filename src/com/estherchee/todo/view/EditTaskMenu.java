@@ -100,9 +100,7 @@ public class EditTaskMenu extends Menu {
                     }
                     isTaskIndexValid = true;
                 } catch (InvalidCommandException error) {
-                    String ANSI_RESET = "\u001B[0m";
-                    String ANSI_RED = "\u001B[31m";
-                    System.out.println(ANSI_RED + "No such task. Please try again." + ANSI_RESET);
+                    System.err.println("No such task. Please try again.");
                 }
             }
             displaySeparator();

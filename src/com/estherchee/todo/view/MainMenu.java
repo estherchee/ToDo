@@ -37,6 +37,7 @@ public class MainMenu extends Menu {
             case 1 -> {
                 ShowTasksMenu showTasksMenu = new ShowTasksMenu();
                 showTasksMenu.startup(commandReader, todos);
+                displaySeparator();
                 getMenu(todos);
                 userChoice = -1;
             }
@@ -46,19 +47,21 @@ public class MainMenu extends Menu {
                 String projectName;
                 System.out.println("Please enter title for the task...");
                 title = commandReader.nextLine();
-                System.out.println("Please enter due date for the task in format of (YYYY-MM-DD)");
+                System.out.println("Please enter due date for the task in format of (YYYY-MM-DD)...");
                 dueDate = commandReader.nextLine();
                 System.out.println("Please enter project name for the task...");
                 projectName = commandReader.nextLine();
                 todos.addTask(title, dueDate, projectName);
                 System.out.println("Your task has been created. Press enter to continue.");
                 commandReader.nextLine();
+                displaySeparator();
                 getMenu(todos);
                 userChoice = -1;
             }
             case 3 -> {
                 EditTaskMenu editTaskMenu = new EditTaskMenu();
                 editTaskMenu.startup(commandReader, todos);
+                displaySeparator();
                 getMenu(todos);
                 userChoice = -1;
             }
