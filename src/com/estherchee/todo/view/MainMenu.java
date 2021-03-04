@@ -44,5 +44,10 @@ public class MainMenu {
         getSummary();
         showSeparator();
         getChoices();
+        showSeparator();
+    }
+
+    public int getNumberOfChoices() {
+        return this.choices.size();
     }
 }

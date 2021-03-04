@@ -1,10 +1,10 @@
 package com.estherchee.todo;
 
-import com.estherchee.todo.view.MainMenu;
+import com.estherchee.todo.view.TextView;
 
 public class Main {
     public static void main(String[] input) {
-        MainMenu app = new MainMenu();
-        app.getMainMenu();
+        TextView app = new TextView();
+        app.startup();
     }
 }
