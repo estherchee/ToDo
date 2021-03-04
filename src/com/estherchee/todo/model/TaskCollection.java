@@ -1,18 +1,18 @@
-package com.estherchee.todo.models;
+package com.estherchee.todo.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TaskCollection {
-    private List<Task> tasks;
+    private final List<Task> tasks;
 
     public TaskCollection() {
         this.tasks = new ArrayList<>();
     }
 
-    public void addTask(final String title, final String dueDate, final String project) {
-        Task task = new Task(title, LocalDate.parse(dueDate), project);
+    public void addTask(final String title, final String dueDate, final String projectName) {
+        Task task = new Task(title, LocalDate.parse(dueDate), projectName);
         this.tasks.add(task);
     }
 
@@ -36,13 +36,26 @@ public class TaskCollection {
         this.tasks.get(index).updateProjectName(newProjectName);
     }
 
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
     public List<Task> getTasksByDate() {
-        tasks.sort(Task.dueDateComparator);
+        this.tasks.sort(Task.dueDateComparator);
         return this.tasks;
     }
 
     public List<Task> getTasksByProject() {
-        tasks.sort(Task.projectNameComparator);
+        this.tasks.sort(Task.projectNameComparator);
         return this.tasks;
+    }
+
+    public int getNumberOfCompletedTask() {
+        return (int) this.tasks.stream()
+                .filter(Task::getTaskStatus).count();
+    }
+
+    public int getNumberOfInProgressTask() {
+        return this.tasks.size() - this.getNumberOfCompletedTask();
     }
 }

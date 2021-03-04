@@ -1,4 +1,4 @@
-package com.estherchee.todo.models;
+package com.estherchee.todo.model;
 
 import java.time.LocalDate;
 import java.util.Comparator;
@@ -7,7 +7,7 @@ import java.util.Comparator;
  * Task provides an object for managing a task. Each task object will hold information about the task name, due date,
  * status and type of a task.
  */
-class Task {
+public class Task {
     private String title;
     private LocalDate dueDate;
     private Boolean isCompleted;
@@ -16,8 +16,8 @@ class Task {
     /**
      * Instantiate a task object with provided information.
      *
-     * @param title   Title of a task.
-     * @param dueDate Due date of a task.
+     * @param title       Title of a task.
+     * @param dueDate     Due date of a task.
      * @param projectName Type of the task.
      */
     Task(final String title, final LocalDate dueDate, final String projectName) {
@@ -25,6 +25,15 @@ class Task {
         this.dueDate = dueDate;
         this.isCompleted = false;
         this.projectName = projectName;
+    }
+
+    /**
+     * Get title of object.
+     *
+     * @return  The title of object.
+     */
+    public String getTitle() {
+        return title;
     }
 
     /**
@@ -43,6 +52,15 @@ class Task {
      */
     void updateDueDate(final String newDueDate) {
         this.dueDate = LocalDate.parse(newDueDate);
+    }
+
+    /**
+     * Get status of object.
+     *
+     * @return true if the task is completed.
+     */
+    Boolean getTaskStatus() {
+        return this.isCompleted;
     }
 
     /**
