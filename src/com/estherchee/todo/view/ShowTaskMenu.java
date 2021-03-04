@@ -7,27 +7,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class MainMenu extends Menu {
-    public MainMenu(TaskCollection todos) {
-        super(new ArrayList<>(Arrays.asList(
-                "Show task list (by date or project)",
-                "Add new task",
-                "Edit task (update, mark as done, remove)",
-                "Save and quit"
-        )));
-    }
+public class ShowTaskMenu extends Menu {
+    private TaskCollection todos;
 
-    private void getSummary(TaskCollection todos) {
-        System.out.println("Here is a summary for you");
-        System.out.println("Number of tasks todo            : " + todos.getNumberOfInProgressTask());
-        System.out.println("Number of tasks are completed   : " + todos.getNumberOfCompletedTask());
+    public ShowTaskMenu(TaskCollection todos) {
+        super(new ArrayList<>(Arrays.asList(
+                "Show task by date",
+                "Show task by project",
+                "Back to main menu"
+        )));
+        this.todos = todos;
     }
 
     @Override
     void getMenu(TaskCollection todos) {
-        System.out.println("Welcome to ToDo!");
-        showSeparator();
-        getSummary(todos);
         showSeparator();
         getChoices();
     }
@@ -46,18 +39,26 @@ public class MainMenu extends Menu {
                 } else {
                     switch (userChoice) {
                         case 1:
-                            ShowTaskMenu menu = new ShowTaskMenu(todos);
-                            menu.startup(commandReader, todos);
-                            userChoice = -1;
-                            getMenu(todos);
+                            showSeparator();
+                            System.out.println(todos.getTasksByDate());
+                            showSeparator();
+                            System.out.println("Press enter to continue.");
+                            commandReader.nextLine();
                             break;
-                        case 4:
-                            commandReader.close();
+                        case 2:
+                            showSeparator();
+                            System.out.println(todos.getTasksByProject());
+                            showSeparator();
+                            System.out.println("Press enter to continue.");
+                            commandReader.nextLine();
+                            break;
+                        case 3:
                             break;
                     }
+                    userChoice = commandToExit;
                 }
             } catch (NumberFormatException | InvalidCommandException error) {
-                System.out.println("throw1");
+                System.out.println("throw5");
                 String ANSI_RESET = "\u001B[0m";
                 String ANSI_RED = "\u001B[31m";
                 System.out.println(ANSI_RED + "Invalid input. Please try again." + ANSI_RESET);

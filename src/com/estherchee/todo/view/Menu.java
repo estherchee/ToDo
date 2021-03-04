@@ -1,6 +1,9 @@
 package com.estherchee.todo.view;
 
+import com.estherchee.todo.model.TaskCollection;
+
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
 abstract class Menu {
@@ -23,7 +26,15 @@ abstract class Menu {
         }
     }
 
-    public int getNumberOfChoices() {
+    int getNumberOfChoices() {
         return this.choices.size();
     }
+
+    int getChoiceNumberToExit() {
+        return this.choices.size();
+    }
+
+    abstract void getMenu(TaskCollection todos);
+
+    public abstract void startup(Scanner commandReader, TaskCollection todos);
 }
