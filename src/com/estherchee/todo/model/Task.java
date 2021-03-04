@@ -10,7 +10,7 @@ import java.util.Comparator;
 public class Task {
     private String title;
     private LocalDate dueDate;
-    private Boolean isCompleted;
+    private boolean isCompleted;
     private String projectName;
 
     /**
@@ -28,9 +28,24 @@ public class Task {
     }
 
     /**
+     * Instantiate a task object with provided information including status.
+     *
+     * @param title       Title of a task.
+     * @param dueDate     Due date of a task.
+     * @param isCompleted Status of a task
+     * @param projectName Type of the task.
+     */
+    Task(final String title, final LocalDate dueDate, final boolean isCompleted, final String projectName) {
+        this.title = title;
+        this.dueDate = dueDate;
+        this.isCompleted = isCompleted;
+        this.projectName = projectName;
+    }
+
+    /**
      * Get title of object.
      *
-     * @return  The title of object.
+     * @return The title of object.
      */
     public String getTitle() {
         return title;
@@ -43,6 +58,15 @@ public class Task {
      */
     void updateTitle(final String newTitle) {
         this.title = newTitle;
+    }
+
+    /**
+     * Get due date of object.
+     *
+     * @return The due date of object.
+     */
+    public String getDueDate() {
+        return dueDate.toString();
     }
 
     /**
@@ -59,7 +83,7 @@ public class Task {
      *
      * @return true if the task is completed.
      */
-    Boolean getTaskStatus() {
+    public boolean getTaskStatus() {
         return this.isCompleted;
     }
 
@@ -68,6 +92,15 @@ public class Task {
      */
     void markTaskAsCompleted() {
         this.isCompleted = true;
+    }
+
+    /**
+     * Get project name of object.
+     *
+     * @return project name of object.
+     */
+    public String getProjectName() {
+        return projectName;
     }
 
     /**

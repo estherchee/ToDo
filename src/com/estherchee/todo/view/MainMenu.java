@@ -32,38 +32,35 @@ public class MainMenu extends Menu {
     }
 
     @Override
-    public int executeMenuSwitcher(int userChoice, int commandToExit, Scanner commandReader, TaskCollection todos) {
-        switch (userChoice) {
-            case 1 -> {
-                ShowTasksMenu showTasksMenu = new ShowTasksMenu();
-                showTasksMenu.startup(commandReader, todos);
-                getMenu(todos);
-                userChoice = -1;
+    public int executeMenuSwitcher(int userChoice, Scanner commandReader, TaskCollection todos) {
+        if (userChoice != getChoiceNumberToExit()) {
+            switch (userChoice) {
+                case 1 -> {
+                    ShowTasksMenu showTasksMenu = new ShowTasksMenu();
+                    showTasksMenu.startup(commandReader, todos);
+                }
+                case 2 -> {
+                    String title;
+                    String dueDate;
+                    String projectName;
+                    System.out.println("Please enter title for the task...");
+                    title = commandReader.nextLine();
+                    System.out.println("Please enter due date for the task in format of (YYYY-MM-DD)...");
+                    dueDate = commandReader.nextLine();
+                    System.out.println("Please enter project name for the task...");
+                    projectName = commandReader.nextLine();
+                    todos.addTask(title, dueDate, projectName);
+                    System.out.println("Your task has been created. Press enter to continue.");
+                    commandReader.nextLine();
+                }
+                case 3 -> {
+                    EditTaskMenu editTaskMenu = new EditTaskMenu();
+                    editTaskMenu.startup(commandReader, todos);
+                }
             }
-            case 2 -> {
-                String title;
-                String dueDate;
-                String projectName;
-                System.out.println("Please enter title for the task...");
-                title = commandReader.nextLine();
-                System.out.println("Please enter due date for the task in format of (YYYY-MM-DD)");
-                dueDate = commandReader.nextLine();
-                System.out.println("Please enter project name for the task...");
-                projectName = commandReader.nextLine();
-                todos.addTask(title, dueDate, projectName);
-                System.out.println("Your task has been created. Press enter to continue.");
-                commandReader.nextLine();
-                getMenu(todos);
-                userChoice = -1;
-            }
-            case 3 -> {
-                EditTaskMenu editTaskMenu = new EditTaskMenu();
-                editTaskMenu.startup(commandReader, todos);
-                getMenu(todos);
-                userChoice = -1;
-            }
-            case 4 -> {
-            }
+            displaySeparator();
+            getMenu(todos);
+            userChoice = -1;
         }
         return userChoice;
     }

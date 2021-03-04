@@ -11,6 +11,11 @@ public class TaskCollection {
         this.tasks = new ArrayList<>();
     }
 
+    public void addTask(final String title, final String dueDate, boolean isCompleted, final String projectName) {
+        Task task = new Task(title, LocalDate.parse(dueDate), isCompleted, projectName);
+        this.tasks.add(task);
+    }
+
     public void addTask(final String title, final String dueDate, final String projectName) {
         Task task = new Task(title, LocalDate.parse(dueDate), projectName);
         this.tasks.add(task);
