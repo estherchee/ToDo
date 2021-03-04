@@ -25,6 +25,42 @@ public class Task {
         this.project = project;
     }
 
+    /**
+     * Modify title of object
+     *
+     * @param newTitle Element for modification of object's title.
+     */
+    public void updateTitle(final String newTitle) {
+        this.title = newTitle;
+    }
+
+    /**
+     * Modify due date of object
+     *
+     * @param newDueDate Element for modification of object's due date.
+     */
+    public void updateDueDate(final String newDueDate) {
+        this.dueDate = newDueDate;
+    }
+
+    /**
+     * Modify status of object.
+     *
+     * @param newStatus Element for modification of object's status.
+     */
+    public void updateStatus(final String newStatus) {
+        this.status = newStatus;
+    }
+
+    /**
+     * Modify type of object.
+     *
+     * @param newProject Element for modification of object's project.
+     */
+    public void updateProject(final String newProject) {
+        this.project = newProject;
+    }
+
     private String capitalisedFirstLetterOfString(final String originalString) {
         return originalString.substring(0, 1).toUpperCase() + originalString.substring(1);
     }
