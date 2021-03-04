@@ -14,7 +14,7 @@ abstract class Menu implements MenuSwitcher {
         this.choices = choices;
     }
 
-    void showSeparator() {
+    void displaySeparator() {
         System.out.println();
     }
 

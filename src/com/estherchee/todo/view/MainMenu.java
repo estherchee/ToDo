@@ -25,9 +25,9 @@ public class MainMenu extends Menu {
     @Override
     void getMenu(TaskCollection todos) {
         System.out.println("Welcome to ToDo!");
-        showSeparator();
+        displaySeparator();
         getSummary(todos);
-        showSeparator();
+        displaySeparator();
         getChoices();
     }
 

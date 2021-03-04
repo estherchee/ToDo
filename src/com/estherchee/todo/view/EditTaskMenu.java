@@ -39,7 +39,7 @@ public class EditTaskMenu extends Menu {
 
     @Override
     void getMenu(TaskCollection todos) {
-        showSeparator();
+        displaySeparator();
         getChoices();
     }
 
@@ -57,7 +57,7 @@ public class EditTaskMenu extends Menu {
     int executeMenuSwitcher(int userChoice, int commandToExit, Scanner commandReader, TaskCollection todos) {
         int COMMAND_TO_EXIT = 6;
         if (userChoice != COMMAND_TO_EXIT) {
-            showSeparator();
+            displaySeparator();
             showTaskSummary(todos);
             String message;
             int taskIndex;
@@ -105,7 +105,7 @@ public class EditTaskMenu extends Menu {
                     System.out.println(ANSI_RED + "No such task. Please try again." + ANSI_RESET);
                 }
             }
-            showSeparator();
+            displaySeparator();
             System.out.println("Information updated. Press enter to continue.");
             commandReader.nextLine();
         }

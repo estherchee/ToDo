@@ -20,7 +20,7 @@ public class ShowTasksMenu extends Menu {
 
     @Override
     void getMenu(TaskCollection todos) {
-        showSeparator();
+        displaySeparator();
         getChoices();
     }
 
@@ -31,7 +31,7 @@ public class ShowTasksMenu extends Menu {
             for (Task task : tasks) {
                 System.out.println(task);
                 if (taskIndex.get() + 1 < tasksSize) {
-                    showSeparator();
+                    displaySeparator();
                 }
                 taskIndex.getAndIncrement();
             }
@@ -44,16 +44,16 @@ public class ShowTasksMenu extends Menu {
     public int executeMenuSwitcher(int userChoice, int commandToExit, Scanner commandReader, TaskCollection todos) {
         switch (userChoice) {
             case 1:
-                showSeparator();
+                displaySeparator();
                 displayTasks(todos.getTasksByDate());
-                showSeparator();
+                displaySeparator();
                 System.out.println("Press enter to continue.");
                 commandReader.nextLine();
                 break;
             case 2:
-                showSeparator();
+                displaySeparator();
                 displayTasks(todos.getTasksByProject());
-                showSeparator();
+                displaySeparator();
                 System.out.println("Press enter to continue.");
                 commandReader.nextLine();
                 break;
