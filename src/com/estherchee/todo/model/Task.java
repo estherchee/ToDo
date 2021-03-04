@@ -7,7 +7,7 @@ import java.util.Comparator;
  * Task provides an object for managing a task. Each task object will hold information about the task name, due date,
  * status and type of a task.
  */
-class Task {
+public class Task {
     private String title;
     private LocalDate dueDate;
     private Boolean isCompleted;
@@ -25,6 +25,15 @@ class Task {
         this.dueDate = dueDate;
         this.isCompleted = false;
         this.projectName = projectName;
+    }
+
+    /**
+     * Get title of object.
+     *
+     * @return  The title of object.
+     */
+    public String getTitle() {
+        return title;
     }
 
     /**

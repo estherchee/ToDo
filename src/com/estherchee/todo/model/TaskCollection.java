@@ -12,8 +12,8 @@ public class TaskCollection {
         this.tasks = new ArrayList<>();
     }
 
-    public void addTask(final String title, final String dueDate, final String project) {
-        Task task = new Task(title, LocalDate.parse(dueDate), project);
+    public void addTask(final String title, final String dueDate, final String projectName) {
+        Task task = new Task(title, LocalDate.parse(dueDate), projectName);
         this.tasks.add(task);
     }
 
@@ -35,6 +35,10 @@ public class TaskCollection {
 
     public void updateProjectName(final int index, final String newProjectName) {
         this.tasks.get(index).updateProjectName(newProjectName);
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
     }
 
     public List<Task> getTasksByDate() {

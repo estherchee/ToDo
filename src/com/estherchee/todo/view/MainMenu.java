@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class MainMenu extends Menu {
-    public MainMenu(TaskCollection todos) {
+    public MainMenu() {
         super(new ArrayList<>(Arrays.asList(
                 "Show task list (by date or project)",
                 "Add new task",
@@ -34,8 +34,30 @@ public class MainMenu extends Menu {
     public int executeMenuSwitcher(int userChoice, int commandToExit, Scanner commandReader, TaskCollection todos) {
         switch (userChoice) {
             case 1:
-                ShowTasksMenu menu = new ShowTasksMenu();
-                menu.startup(commandReader, todos);
+                ShowTasksMenu showTasksMenu = new ShowTasksMenu();
+                showTasksMenu.startup(commandReader, todos);
+                getMenu(todos);
+                userChoice = -1;
+                break;
+            case 2:
+                String title;
+                String dueDate;
+                String projectName;
+                System.out.println("Please enter title for the task...");
+                title = commandReader.nextLine();
+                System.out.println("Please enter due date for the task in format of (YYYY-MM-DD)");
+                dueDate = commandReader.nextLine();
+                System.out.println("Please enter project name for the task...");
+                projectName = commandReader.nextLine();
+                todos.addTask(title,dueDate,projectName);
+                System.out.println("Your task has been created. Press enter to continue.");
+                commandReader.nextLine();
+                getMenu(todos);
+                userChoice = -1;
+                break;
+            case 3:
+                EditTaskMenu editTaskMenu = new EditTaskMenu();
+                editTaskMenu.startup(commandReader, todos);
                 getMenu(todos);
                 userChoice = -1;
                 break;
