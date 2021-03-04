@@ -22,6 +22,7 @@ public class MainMenu extends Menu {
         System.out.println("Number of tasks are completed   : " + todos.getNumberOfCompletedTask());
     }
 
+    @Override
     void getMenu(TaskCollection todos) {
         System.out.println("Welcome to ToDo!");
         showSeparator();
@@ -33,13 +34,13 @@ public class MainMenu extends Menu {
     @Override
     public int executeMenuSwitcher(int userChoice, int commandToExit, Scanner commandReader, TaskCollection todos) {
         switch (userChoice) {
-            case 1:
+            case 1 -> {
                 ShowTasksMenu showTasksMenu = new ShowTasksMenu();
                 showTasksMenu.startup(commandReader, todos);
                 getMenu(todos);
                 userChoice = -1;
-                break;
-            case 2:
+            }
+            case 2 -> {
                 String title;
                 String dueDate;
                 String projectName;
@@ -49,21 +50,20 @@ public class MainMenu extends Menu {
                 dueDate = commandReader.nextLine();
                 System.out.println("Please enter project name for the task...");
                 projectName = commandReader.nextLine();
-                todos.addTask(title,dueDate,projectName);
+                todos.addTask(title, dueDate, projectName);
                 System.out.println("Your task has been created. Press enter to continue.");
                 commandReader.nextLine();
                 getMenu(todos);
                 userChoice = -1;
-                break;
-            case 3:
+            }
+            case 3 -> {
                 EditTaskMenu editTaskMenu = new EditTaskMenu();
                 editTaskMenu.startup(commandReader, todos);
                 getMenu(todos);
                 userChoice = -1;
-                break;
-            case 4:
-                userChoice = 4;
-                break;
+            }
+            case 4 -> {
+            }
         }
         return userChoice;
     }

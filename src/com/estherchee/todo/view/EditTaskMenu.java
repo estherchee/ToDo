@@ -10,9 +10,12 @@ import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class EditTaskMenu extends Menu {
+
     public EditTaskMenu() {
         super(new ArrayList<>(Arrays.asList(
                 "Update task details",
+                "Update due date of task",
+                "Update due date of project name",
                 "Mark as done",
                 "Remove task",
                 "Back to main menu"
@@ -52,33 +55,48 @@ public class EditTaskMenu extends Menu {
 
     @Override
     int executeMenuSwitcher(int userChoice, int commandToExit, Scanner commandReader, TaskCollection todos) {
-        if (userChoice != 4) {
+        int COMMAND_TO_EXIT = 6;
+        if (userChoice != COMMAND_TO_EXIT) {
             showSeparator();
             showTaskSummary(todos);
             String message;
             int taskIndex;
-            Boolean isTaskIndexValid = false;
+            boolean isTaskIndexValid = false;
             int numberOfTasks = todos.getTasks().size();
             while (!isTaskIndexValid) {
                 try {
                     switch (userChoice) {
-                        case 1:
+                        case 1 -> {
                             message = "Please enter the task number to update title";
                             taskIndex = getTaskNumberToUpdate(commandReader, message, numberOfTasks);
                             System.out.println("Please enter new title");
                             String title = commandReader.nextLine();
                             todos.updateTaskTitle(taskIndex, title);
-                            break;
-                        case 2:
+                        }
+                        case 2 -> {
+                            message = "Please enter the task number to update due date";
+                            taskIndex = getTaskNumberToUpdate(commandReader, message, numberOfTasks);
+                            System.out.println("Please enter new due date");
+                            String dueDate = commandReader.nextLine();
+                            todos.updateDueDate(taskIndex, dueDate);
+                        }
+                        case 3 -> {
+                            message = "Please enter the task number to update project name";
+                            taskIndex = getTaskNumberToUpdate(commandReader, message, numberOfTasks);
+                            System.out.println("Please enter new project name");
+                            String projectName = commandReader.nextLine();
+                            todos.updateProjectName(taskIndex, projectName);
+                        }
+                        case 4 -> {
                             message = "Please enter the task number to mark as done";
                             taskIndex = getTaskNumberToUpdate(commandReader, message, numberOfTasks);
                             todos.markAsCompleted(taskIndex);
-                            break;
-                        case 3:
+                        }
+                        case 5 -> {
                             message = "Please enter the task number to remove";
                             taskIndex = getTaskNumberToUpdate(commandReader, message, numberOfTasks);
                             todos.removeTask(taskIndex);
-                            break;
+                        }
                     }
                     isTaskIndexValid = true;
                 } catch (InvalidCommandException error) {

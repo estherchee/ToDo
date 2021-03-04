@@ -15,7 +15,7 @@ abstract class Menu implements MenuSwitcher {
     }
 
     void showSeparator() {
-        System.out.println("");
+        System.out.println();
     }
 
     void getChoices() {
@@ -45,8 +45,7 @@ abstract class Menu implements MenuSwitcher {
                 if (userChoice <= 0 || userChoice > getNumberOfChoices()) {
                     throw new InvalidCommandException(userChoice);
                 } else {
-                    int choice = menu.execute(userChoice, commandToExit, commandReader, todos);
-                    userChoice = choice;
+                    userChoice = menu.execute(userChoice, commandToExit, commandReader, todos);
                 }
             } catch (NumberFormatException | InvalidCommandException error) {
                 String ANSI_RESET = "\u001B[0m";

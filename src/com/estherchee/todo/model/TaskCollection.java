@@ -3,10 +3,9 @@ package com.estherchee.todo.model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class TaskCollection {
-    private List<Task> tasks;
+    private final List<Task> tasks;
 
     public TaskCollection() {
         this.tasks = new ArrayList<>();
@@ -52,9 +51,8 @@ public class TaskCollection {
     }
 
     public int getNumberOfCompletedTask() {
-        return this.tasks.stream()
-                .filter(task -> task.getTaskStatus())
-                .collect(Collectors.toList()).size();
+        return (int) this.tasks.stream()
+                .filter(Task::getTaskStatus).count();
     }
 
     public int getNumberOfInProgressTask() {
