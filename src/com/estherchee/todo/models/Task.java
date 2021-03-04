@@ -4,7 +4,7 @@ package com.estherchee.todo.models;
  * Task provides an object for managing a task. Each task object will hold information about the task name, due date,
  * status and type of a task.
  */
-public class Task {
+class Task {
     private String title;
     private String dueDate;
     private Boolean isCompleted;
@@ -17,7 +17,7 @@ public class Task {
      * @param dueDate Due date of a task.
      * @param project Type of the task.
      */
-    public Task(final String title, final String dueDate, final String project) {
+    Task(final String title, final String dueDate, final String project) {
         this.title = title;
         this.dueDate = dueDate;
         this.isCompleted = false;
@@ -29,7 +29,7 @@ public class Task {
      *
      * @param newTitle Element for modification of object's title.
      */
-    public void updateTitle(final String newTitle) {
+    void updateTitle(final String newTitle) {
         this.title = newTitle;
     }
 
@@ -38,14 +38,14 @@ public class Task {
      *
      * @param newDueDate Element for modification of object's due date.
      */
-    public void updateDueDate(final String newDueDate) {
+    void updateDueDate(final String newDueDate) {
         this.dueDate = newDueDate;
     }
 
     /**
      * Mark status of object as completed.
      */
-    public void markTaskAsCompleted() {
+    void markTaskAsCompleted() {
         this.isCompleted = true;
     }
 
@@ -54,7 +54,7 @@ public class Task {
      *
      * @param newProject Element for modification of object's project.
      */
-    public void updateProject(final String newProject) {
+    void updateProject(final String newProject) {
         this.project = newProject;
     }
 
