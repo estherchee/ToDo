@@ -6,7 +6,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * Main menu for user interacting with the application.
+ */
 public class MainMenu extends Menu {
+    /**
+     * Initialise {@link MainMenu} object with a list of choices.
+     */
     public MainMenu() {
         super(new ArrayList<>(Arrays.asList(
                 "Show task list (by date or project)",
@@ -22,8 +28,14 @@ public class MainMenu extends Menu {
         System.out.println("Number of tasks are completed   : " + todos.getNumberOfCompletedTask());
     }
 
+
+    /**
+     * Display the available options with a status summary indicating number of tasks completed and number of task todo.
+     *
+     * @param todos A collection of <code>Task</code> object.
+     */
     @Override
-    void getMenu(TaskCollection todos) {
+    void displayMenu(TaskCollection todos) {
         System.out.println("Welcome to ToDo!");
         displaySeparator();
         getSummary(todos);
@@ -31,6 +43,13 @@ public class MainMenu extends Menu {
         getChoices();
     }
 
+    /**
+     * Run selected option according to user input.
+     *
+     * @param userChoice    Input of user.
+     * @param commandReader <code>Scanner</code> object to get user input.
+     * @param todos         A collection of <code>Task</code> object.
+     */
     @Override
     public int executeMenuSwitcher(int userChoice, Scanner commandReader, TaskCollection todos) {
         if (userChoice != getChoiceNumberToExit()) {
@@ -59,15 +78,18 @@ public class MainMenu extends Menu {
                 }
             }
             displaySeparator();
-            getMenu(todos);
+            displayMenu(todos);
             userChoice = -1;
         }
         return userChoice;
     }
 
+    /**
+     * Display main menu with options and capture user input for running of operation.
+     */
     @Override
     public void startup(Scanner commandReader, TaskCollection todos) {
-        getMenu(todos);
+        displayMenu(todos);
         menuLoop(todos, commandReader, this);
         commandReader.close();
     }

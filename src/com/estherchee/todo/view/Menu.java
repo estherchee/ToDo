@@ -7,17 +7,30 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
+
+/**
+ * Abstract class to model the basic behaviour of menu object.
+ */
 abstract class Menu implements MenuSwitcher {
     final ArrayList<String> choices;
 
+    /**
+     * Initialise object with a list of choices.
+     */
     Menu(ArrayList<String> choices) {
         this.choices = choices;
     }
 
+    /**
+     * Display a separator.
+     */
     void displaySeparator() {
         System.out.println("");
     }
 
+    /**
+     * Display all choices.
+     */
     void getChoices() {
         System.out.println("Please pick an option:");
         AtomicInteger choiceNumber = new AtomicInteger(1);
@@ -27,14 +40,31 @@ abstract class Menu implements MenuSwitcher {
         }
     }
 
+    /**
+     * Return the number of available choices.
+     *
+     * @return the number of choices available for selection.
+     */
     int getNumberOfChoices() {
         return this.choices.size();
     }
 
+    /**
+     * Return the choice number to exit from menu.
+     *
+     * @return the choice number to exit menu.
+     */
     int getChoiceNumberToExit() {
         return this.choices.size();
     }
 
+    /**
+     * Running the menu until user choose the exit option and validate user choice.
+     *
+     * @param todos         A collection of <code>Task</code> object.
+     * @param commandReader <code>Scanner</code> object to get user input.
+     * @param menu          The menu that is currently running.
+     */
     void menuLoop(TaskCollection todos, Scanner commandReader, Menu menu) {
         int commandToExit = getChoiceNumberToExit();
         int userChoice = 0;
@@ -53,12 +83,30 @@ abstract class Menu implements MenuSwitcher {
         }
     }
 
+    /**
+     * Display menu with options to edit task details and capture user input for running of operation.
+     */
     public abstract void startup(Scanner commandReader, TaskCollection todos);
 
-    abstract void getMenu(TaskCollection todos);
+    /**
+     * Display the available options.
+     *
+     * @param todos A collection of <code>Task</code> object.
+     */
+    abstract void displayMenu(TaskCollection todos);
 
+    /**
+     * Run selected option according to user input.
+     *
+     * @param userChoice    Input of user.
+     * @param commandReader <code>Scanner</code> object to get user input.
+     * @param todos         A collection of <code>Task</code> object.
+     */
     abstract int executeMenuSwitcher(int userChoice, Scanner commandReader, TaskCollection todos);
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int execute(int userChoice, Scanner commandReader, TaskCollection todos) {
         return executeMenuSwitcher(userChoice, commandReader, todos);

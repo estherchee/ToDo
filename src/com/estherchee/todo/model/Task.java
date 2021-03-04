@@ -14,10 +14,10 @@ public class Task {
     private String projectName;
 
     /**
-     * Instantiate a task object with provided information.
+     * Instantiate a <code>Task</code> object with provided information.
      *
      * @param title       Title of a task.
-     * @param dueDate     Due date of a task.
+     * @param dueDate     Due date of a task as <code>LocalDate</code>.
      * @param projectName Type of the task.
      */
     Task(final String title, final LocalDate dueDate, final String projectName) {
@@ -31,15 +31,13 @@ public class Task {
      * Instantiate a task object with provided information including status.
      *
      * @param title       Title of a task.
-     * @param dueDate     Due date of a task.
+     * @param dueDate     Due date of a task as <code>LocalDate</code>.
      * @param isCompleted Status of a task
      * @param projectName Type of the task.
      */
     Task(final String title, final LocalDate dueDate, final boolean isCompleted, final String projectName) {
-        this.title = title;
-        this.dueDate = dueDate;
+        this(title, dueDate, projectName);
         this.isCompleted = isCompleted;
-        this.projectName = projectName;
     }
 
     /**
@@ -63,7 +61,7 @@ public class Task {
     /**
      * Get due date of object.
      *
-     * @return The due date of object.
+     * @return The due date of object as <code>String</code>.
      */
     public String getDueDate() {
         return dueDate.toString();
@@ -112,6 +110,13 @@ public class Task {
         this.projectName = newProjectName;
     }
 
+    /**
+     * Compare given <code>Task</code> objects based on due date.
+     *
+     * @param task1 <code>Task</code> object to compare.
+     * @param task2 <code>Task</code> object to compare.
+     * @return a <code>Comparator</code> object.
+     */
     static Comparator<Task> dueDateComparator = (task1, task2) -> {
         if (task1.dueDate.isBefore(task2.dueDate)) {
             return -1;
@@ -122,6 +127,13 @@ public class Task {
         }
     };
 
+    /**
+     * Compare given <code>Task</code> objects based on project name.
+     *
+     * @param task1 <code>Task</code> object to compare.
+     * @param task2 <code>Task</code> object to compare.
+     * @return a <code>Comparator</code> object.
+     */
     static Comparator<Task> projectNameComparator = Comparator.comparing(task -> task.projectName);
 
     private String capitalisedFirstLetterOfString(final String originalString) {

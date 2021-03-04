@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +14,11 @@ import java.util.List;
  */
 class FileIO {
     /**
-     * Read each line of the information from the specify <code>Path</code> object as a collection of String if the file
+     * Read each line of the information from the specify {@link Path} object as a collection of String if the file
      * is exists and readable.
      *
      * @param path <code>Path</code> object which contains information of the path to target file.
-     * @return a collection of string read from file.
+     * @return a collection of <code>String</code> object read from file.
      */
     List<String> readEachLineOfFile(final Path path) {
         List<String> fileContents = new ArrayList<>();

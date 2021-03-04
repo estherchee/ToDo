@@ -2,6 +2,7 @@ package com.estherchee.todo.repository;
 
 import com.estherchee.todo.model.Task;
 import com.estherchee.todo.model.TaskCollection;
+import com.estherchee.todo.view.TextView;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,10 +14,17 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+
+/**
+ * Provides methods to read collection of <code>Task</code> object from file and write to file.
+ */
 public class TaskIO extends FileIO {
     private final String filePath;
     private final Path path;
 
+    /**
+     * Construct {@link TaskIO} object for read and saving of <code>Task</code>.
+     */
     public TaskIO() {
         filePath = "src/data/tasks.csv";
         path = Paths.get(filePath).toAbsolutePath();

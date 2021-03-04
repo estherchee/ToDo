@@ -9,8 +9,14 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * Menu for editing task details.
+ */
 public class EditTaskMenu extends Menu {
-
+    /**
+     * Initialise {@link EditTaskMenu} object with a list of choices. Available options including update task details
+     * and remove task from collection.
+     */
     public EditTaskMenu() {
         super(new ArrayList<>(Arrays.asList(
                 "Update task details",
@@ -31,14 +37,20 @@ public class EditTaskMenu extends Menu {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void startup(Scanner commandReader, TaskCollection todos) {
-        getMenu(todos);
+        displayMenu(todos);
         menuLoop(todos, commandReader, this);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    void getMenu(TaskCollection todos) {
+    void displayMenu(TaskCollection todos) {
         displaySeparator();
         getChoices();
     }
@@ -53,6 +65,9 @@ public class EditTaskMenu extends Menu {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     int executeMenuSwitcher(int userChoice, Scanner commandReader, TaskCollection todos) {
         if (userChoice != getChoiceNumberToExit()) {
