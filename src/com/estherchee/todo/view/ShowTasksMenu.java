@@ -9,7 +9,13 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * Menu for display of tasks.
+ */
 public class ShowTasksMenu extends Menu {
+    /**
+     * Initialise {@link ShowTasksMenu} object with a list of choices.
+     */
     public ShowTasksMenu() {
         super(new ArrayList<>(Arrays.asList(
                 "Show task by date",
@@ -18,8 +24,11 @@ public class ShowTasksMenu extends Menu {
         )));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    void getMenu(TaskCollection todos) {
+    void displayMenu(TaskCollection todos) {
         displaySeparator();
         getChoices();
     }
@@ -40,6 +49,9 @@ public class ShowTasksMenu extends Menu {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int executeMenuSwitcher(int userChoice, Scanner commandReader, TaskCollection todos) {
         switch (userChoice) {
@@ -63,9 +75,12 @@ public class ShowTasksMenu extends Menu {
         return getChoiceNumberToExit();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void startup(Scanner commandReader, TaskCollection todos) {
-        getMenu(todos);
+        displayMenu(todos);
         menuLoop(todos, commandReader, this);
     }
 }
