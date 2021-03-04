@@ -11,20 +11,20 @@ class Task {
     private String title;
     private LocalDate dueDate;
     private Boolean isCompleted;
-    private String project;
+    private String projectName;
 
     /**
      * Instantiate a task object with provided information.
      *
      * @param title   Title of a task.
      * @param dueDate Due date of a task.
-     * @param project Type of the task.
+     * @param projectName Type of the task.
      */
-    Task(final String title, final LocalDate dueDate, final String project) {
+    Task(final String title, final LocalDate dueDate, final String projectName) {
         this.title = title;
         this.dueDate = dueDate;
         this.isCompleted = false;
-        this.project = project;
+        this.projectName = projectName;
     }
 
     /**
@@ -53,12 +53,12 @@ class Task {
     }
 
     /**
-     * Modify type of object.
+     * Modify project name of object.
      *
-     * @param newProject Element for modification of object's project.
+     * @param newProjectName Element for modification of object's project name.
      */
-    void updateProject(final String newProject) {
-        this.project = newProject;
+    void updateProjectName(final String newProjectName) {
+        this.projectName = newProjectName;
     }
 
     static Comparator<Task> dueDateComparator = (task1, task2) -> {
@@ -71,7 +71,7 @@ class Task {
         }
     };
 
-    static Comparator<Task> projectComparator = Comparator.comparing(task -> task.project);
+    static Comparator<Task> projectNameComparator = Comparator.comparing(task -> task.projectName);
 
     private String capitalisedFirstLetterOfString(final String originalString) {
         return originalString.substring(0, 1).toUpperCase() + originalString.substring(1);
@@ -85,10 +85,10 @@ class Task {
         } else {
             status = "In progress";
         }
-        String line1 = "Title    : " + capitalisedFirstLetterOfString(this.title);
-        String line2 = "Due date : " + this.dueDate.toString();
-        String line3 = "Status   : " + status;
-        String line4 = "Project  : " + capitalisedFirstLetterOfString(this.project);
+        String line1 = "Title        : " + capitalisedFirstLetterOfString(this.title);
+        String line2 = "Due date     : " + this.dueDate.toString();
+        String line3 = "Status       : " + status;
+        String line4 = "Project name : " + capitalisedFirstLetterOfString(this.projectName);
         return line1 + "\n" + line2 + "\n" + line3 + "\n" + line4;
     }
 }
