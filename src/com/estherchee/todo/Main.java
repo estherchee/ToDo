@@ -3,7 +3,7 @@ package com.estherchee.todo;
 import com.estherchee.todo.view.TextView;
 
 /**
- * Initialized the Personify program.
+ * Initialized the ToDo program.
  */
 public class Main {
     /**
