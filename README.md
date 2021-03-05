@@ -17,9 +17,9 @@ The user can choose to view the tasks sorted according to due date or project na
 5. Use  **ToDo** app on *terminal*
 
   *** **What can a user do with ToDo app:**
-  1. Once the app is successfully run on terminal, a user will see: 
-
-   <img src="https://github.com/estherchee/ToDo/raw/master/Screenshots/Screenshot%201.png" alt="Screenshot 1" style="max-width:100%;width: 500px;">
+  1. Once the app is successfully run on terminal, a user will see:
+   
+   ![Screenshot 1](https://github.com/estherchee/ToDo/blob/master/Screenshots/Screenshot%201.png) 
      
 2. On *terminal*, a user enter *1* , *2*, *3* or *4* respective operation.
 For example in order to create a new task, a user can enter the task details as following:
