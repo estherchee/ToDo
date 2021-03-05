@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TaskTest {
     private String title;
     private LocalDate dueDate;
-    private boolean isCompleted;
     private String projectName;
     private Task task;
 
@@ -21,7 +20,6 @@ public class TaskTest {
     void setUp() {
         title = "Doing unit testing";
         dueDate = LocalDate.now();
-        isCompleted = false;
         projectName = "Unit test";
         task = new Task(title, dueDate, projectName);
     }
