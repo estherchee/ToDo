@@ -2,7 +2,6 @@ package com.estherchee.todo.repository;
 
 import com.estherchee.todo.model.Task;
 import com.estherchee.todo.model.TaskCollection;
-import com.estherchee.todo.view.TextView;
 
 import java.io.IOException;
 import java.nio.file.Files;
