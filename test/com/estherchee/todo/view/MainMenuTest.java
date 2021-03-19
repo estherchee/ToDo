@@ -63,7 +63,7 @@ public class MainMenuTest {
     @Test
     void testEditTaskUpdateDueDate() {
         String expected = "2021-12-10";
-        String command = "3\n" + "2\n" + "1\n" + expected + "\n" + "\n"+"4\n";
+        String command = "3\n" + "2\n" + "1\n" + expected + "\n" + "\n" + "4\n";
         InputStream input = new ByteArrayInputStream(command.getBytes());
         System.setIn(input);
 

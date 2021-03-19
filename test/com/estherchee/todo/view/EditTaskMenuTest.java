@@ -45,7 +45,7 @@ public class EditTaskMenuTest {
     }
 
     @Test
-    void testUpdateDueDate(){
+    void testUpdateDueDate() {
         String expected = "2021-12-10";
         String command = "2\n" + "1\n" + expected + "\n" + "\n";
         InputStream input = new ByteArrayInputStream(command.getBytes());
@@ -59,7 +59,7 @@ public class EditTaskMenuTest {
     }
 
     @Test
-    void testUpdateProjectName(){
+    void testUpdateProjectName() {
         String expected = "New project name";
         String command = "3\n" + "1\n" + expected + "\n" + "\n";
         InputStream input = new ByteArrayInputStream(command.getBytes());
@@ -73,7 +73,7 @@ public class EditTaskMenuTest {
     }
 
     @Test
-    void testMarkTaskAsDone(){
+    void testMarkTaskAsDone() {
         String command = "4\n" + "1\n" + "\n";
         InputStream input = new ByteArrayInputStream(command.getBytes());
         System.setIn(input);
@@ -86,7 +86,7 @@ public class EditTaskMenuTest {
     }
 
     @Test
-    void testRemoveTask(){
+    void testRemoveTask() {
         String command = "5\n" + "1\n" + "1\n" + "\n";
         InputStream input = new ByteArrayInputStream(command.getBytes());
         System.setIn(input);
