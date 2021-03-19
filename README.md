@@ -12,14 +12,15 @@ The user can choose to view the tasks sorted according to due date or project na
 
 1. Download **ToDo** app repository from https://github.com/estherchee/ToDo
 2. Open a command prompt window and navigate to the directory where you saved the java program (ToDo.jar). 
-3. On the command prompt window, type 
-   java -jar ToDo.jar
+3. Make sure a folder with the name *data* is available in the app package.
+4. On the command prompt window, type 
+   `java -jar ToDo.jar`
    
-4. Now **ToDo** app is successfully running on the terminal.
+5. Now **ToDo** app is successfully running on the terminal.
 
 
   *** **What can a user do with ToDo app:**
-  1. Once the app is successfully run on terminal, a user will see the main menu with 4 options:
+1. Once the app is successfully run on terminal, a user will see the main menu with 4 options:
    
    ![Picture1](https://github.com/estherchee/ToDo/blob/master/Screenshots/ToDoMainMenu.png) 
      
