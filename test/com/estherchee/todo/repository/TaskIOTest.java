@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TaskIOTest {
     private TaskIO taskIO;
-    private static final Path ORIGINAL_PATH = Paths.get("src/data/tasks.csv");
-    private static final Path COPY_PATH = Paths.get("src/data/tasks_backup_for_test.csv");
+    private static final Path ORIGINAL_PATH = Paths.get("data/tasks.csv");
+    private static final Path COPY_PATH = Paths.get("data/tasks_backup_for_test.csv");
 
     @BeforeAll
     static void setUpBeforeAll() throws IOException {

@@ -25,7 +25,7 @@ public class TaskIO extends FileIO {
      * Construct {@link TaskIO} object for read and saving of <code>Task</code>.
      */
     public TaskIO() {
-        filePath = "src/data/tasks.csv";
+        filePath = "data/tasks.csv";
         path = Paths.get(filePath).toAbsolutePath();
     }
 

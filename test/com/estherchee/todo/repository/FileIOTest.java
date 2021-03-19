@@ -38,7 +38,7 @@ class FileIOTest {
     @Test
     void testReadingFileFromSystem() throws IOException {
         Set<PosixFilePermission> perms = PosixFilePermissions.fromString("rwx------");
-        Path filePath = Paths.get("src/data/fileForTesting.txt");
+        Path filePath = Paths.get("data/fileForTesting.txt");
         Files.createFile(filePath, PosixFilePermissions.asFileAttribute(perms));
 
         int fileContentSize = file.readEachLineOfFile(filePath).size();
@@ -51,7 +51,7 @@ class FileIOTest {
     @Test
     void testReadingFileNotExistsInSystem() throws IOException {
         Set<PosixFilePermission> perms = PosixFilePermissions.fromString("rwx------");
-        Path filePath = Paths.get("src/data/fileForTesting.txt");
+        Path filePath = Paths.get("data/fileForTesting.txt");
         Files.createFile(filePath, PosixFilePermissions.asFileAttribute(perms));
         Files.delete(filePath);
 
@@ -65,7 +65,7 @@ class FileIOTest {
     @Test
     void testReadingFileWithNoReadPermission() throws IOException {
         Set<PosixFilePermission> perms = PosixFilePermissions.fromString("-wx------");
-        Path filePath = Paths.get("src/data/fileForTesting.txt");
+        Path filePath = Paths.get("data/fileForTesting.txt");
         Files.createFile(filePath, PosixFilePermissions.asFileAttribute(perms));
 
         file.readEachLineOfFile(filePath);
